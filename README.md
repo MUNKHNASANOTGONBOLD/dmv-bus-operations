@@ -39,6 +39,18 @@ Python export.py -> route_hour.csv + pipeline_health.csv
 Tableau / exploratory operational dashboard
 ```
 
+## Original SQLite databases and sample preview
+
+The source archive contained `wmata.sqlite` and `wmata_review.sqlite`, each 978,620,416 bytes. Both passed SQLite integrity checks. The **logical contents** of both `polls` and `positions` tables match exactly when streamed in primary-key order; their binary file hashes differ because of database-file layout. Only one full copy is needed.
+
+GitHub blocks normal Git pushes of files above 100 MB, so the full ~979 MB database is **not in this repository**. The original archive remains with the project owner. Use `make_sample_db.py` locally to produce a sanitized SQLite preview (default: 8 polls, up to 800 positions). The preview strips raw JSON payloads; it is for schema and query exploration, not statistically representative analysis.
+
+```bash
+python make_sample_db.py --source data/wmata.sqlite --out wmata-sample.sqlite
+```
+
+**Security:** The original SQLite payloads were inspected for API-key field names in `polls.raw_json`; none were found. Raw GPS JSON and complete databases remain excluded from GitHub. Do not publish full data without verifying WMATA redistribution terms and data privacy requirements.
+
 ## Repository contents
 
 - `collector.py`: requests live bus positions and records both successful and failed polls.
@@ -46,6 +58,7 @@ Tableau / exploratory operational dashboard
 - `sql/route_hour.sql`: selects the latest observation per route/vehicle/trip/local hour before aggregating.
 - `tests/test_pipeline.py`: synthetic tests for ingestion and deduplication.
 - `sample_exports/`: supplied collection's aggregated CSVs (no raw GPS payloads or credentials).
+- `make_sample_db.py`: builds a small sanitized SQLite preview from the full local database.
 - `ARTICLE.md`: project write-up, methods, findings, limitations and next steps.
 
 ## Run locally
