@@ -4,7 +4,7 @@
 
 An observational data pipeline for exploring route-hour variation in WMATA Metrobus operations across the Washington, DC metropolitan region. The project collects live vehicle-position snapshots, retains ingestion health, deduplicates repeated observations for route-hour indicators, and exports Tableau-ready datasets.
 
-> **Scope:** WMATA's regional network, not exclusively the District of Columbia. Reported schedule deviation is an exploratory API-based measure—not official on-time performance, verified passenger delay, or proof of a causal bottleneck.
+> **Scope:** WMATA's regional network, not exclusively the District of Columbia. Reported schedule deviation is an exploratory API-based measure. It does not establish official on-time performance, verified passenger delay, or proof of a causal bottleneck.
 
 ## Evidence from the supplied collection
 
@@ -106,4 +106,4 @@ The route-hour dataset supports route comparisons, time-of-day patterns and data
 
 ## Author
 
-Munkhnasan Otgonbold — Data Analytics / Business Analytics portfolio project.
+Munkhnasan Otgonbold: Data Analytics / Business Analytics portfolio project.
